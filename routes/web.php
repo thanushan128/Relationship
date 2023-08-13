@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // $user = User::find(1);
+    // dd($user->phone);
+    
+    // Get the output as json format
+    $user = User::with('phone')->whereId(1)->first();
+    return Response::json($user);
 });
