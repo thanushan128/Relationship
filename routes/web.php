@@ -28,6 +28,16 @@ Route::get('/', function () {
     // dd($phone->user);
 
     // Get the output as json format
-    $phone = Phone::with('user')->whereId(1)->first();
-    return Response::json($phone);
+    // $phone = Phone::with('user')->whereId(1)->first();
+    // return Response::json($phone);
+
+    // Update records
+        $user = User::find(1);
+        $phone = new Phone;
+        $phone->phone = '0768888888';
+
+    // $user->phone()->save($phone);
+        $user->phone()->update($phone->toArray());
+        return 'Saved!';
+
 });
