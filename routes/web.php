@@ -32,12 +32,18 @@ Route::get('/', function () {
     // return Response::json($phone);
 
     // Update records
-        $user = User::find(1);
-        $phone = new Phone;
-        $phone->phone = '0768888888';
+        // $user = User::find(1);
+        // $phone = new Phone;
+        // $phone->phone = '0768888888';
 
     // $user->phone()->save($phone);
-        $user->phone()->update($phone->toArray());
-        return 'Saved!';
+        // $user->phone()->update($phone->toArray());
+        // return 'Saved!';
 
+    // change the relationship record into another user record
+        $phone = Phone::find(1);
+        $user = User::find(2);
+
+        $phone->user()->associate($user)->save();
+        return 'Saved!';
 });
