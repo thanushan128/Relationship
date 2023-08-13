@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Response;
+use App\Models\Phone;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,16 @@ use Illuminate\Support\Facades\Response;
 Route::get('/', function () {
     // $user = User::find(1);
     // dd($user->phone);
-    
+
     // Get the output as json format
-    $user = User::with('phone')->whereId(1)->first();
-    return Response::json($user);
+    // $user = User::with('phone')->whereId(1)->first();
+    // return Response::json($user);
+
+    // belongs to (inverse one to one relationship)
+    // $phone = Phone::find(1);
+    // dd($phone->user);
+
+    // Get the output as json format
+    $phone = Phone::with('user')->whereId(1)->first();
+    return Response::json($phone);
 });
