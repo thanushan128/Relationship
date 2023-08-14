@@ -77,16 +77,22 @@ Route::get('/', function () {
     // $comment->name = "My forth Comment";
 
     // $post->comments()->save($comment);
-    // return "Create Sucessfully!";
+    // return "Sucessfully Insert a record!";
 
     // Insert multi record at a time
-    $post = Post::find(1);
-    $comment5 = new Comment;
-    $comment5->name = "My fifth Comment";
+    // $post = Post::find(1);
+    // $comment5 = new Comment;
+    // $comment5->name = "My fifth Comment";
 
-    $comment6 = new Comment;
-    $comment6->name = "My sixth Comment";
+    // $comment6 = new Comment;
+    // $comment6->name = "My sixth Comment";
 
-    $post->comments()->saveMany([$comment5,$comment6]);
-    return "Create Sucessfully!";
+    // $post->comments()->saveMany([$comment5,$comment6]);
+    // return "Sucessfully Insert Multi Record!";
+
+    $comment = Comment::find(2);
+    $post = Post::find(2);
+
+    $comment->post()->associate($post)->save();
+    return "Sucessfully Changeed the foregin key !";
 });
