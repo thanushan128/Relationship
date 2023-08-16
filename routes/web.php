@@ -52,47 +52,55 @@ use App\Models\Post;
 //         return 'Saved!';
 // });
 
-// one to many Realation
+// // one to many Realation
+// Route::get('/', function () {
+//     // $post = Post::find(1);
+//     // dd($post->comments);
+
+
+//     // Get data as json format
+//     // $post = Post::with('comments')->whereId(1)->first();
+//     // return Response::json($post);
+
+//     // Inversation of one to many
+//     // $comment = Comment::find(1);
+//     // dd($comment->post);
+
+//     // $comment = Comment::with('post')->whereId(1)->first();
+//     // return Response::json($comment);
+
+//     // // Insert a record
+//     // $post = Post::find(1);
+//     // $comment = new Comment;
+
+//     // // $comment->name = "My third Comment";
+//     // $comment->name = "My forth Comment";
+
+//     // $post->comments()->save($comment);
+//     // return "Sucessfully Insert a record!";
+
+//     // Insert multi record at a time
+//     // $post = Post::find(1);
+//     // $comment5 = new Comment;
+//     // $comment5->name = "My fifth Comment";
+
+//     // $comment6 = new Comment;
+//     // $comment6->name = "My sixth Comment";
+
+//     // $post->comments()->saveMany([$comment5,$comment6]);
+//     // return "Sucessfully Insert Multi Record!";
+
+//     $comment = Comment::find(2);
+//     $post = Post::find(2);
+
+//     $comment->post()->associate($post)->save();
+//     return "Sucessfully Changeed the foregin key !";
+// });
+
+
+// many to many Realation
 Route::get('/', function () {
-    // $post = Post::find(1);
-    // dd($post->comments);
-
-
-    // Get data as json format
-    // $post = Post::with('comments')->whereId(1)->first();
-    // return Response::json($post);
-
-    // Inversation of one to many
-    // $comment = Comment::find(1);
-    // dd($comment->post);
-
-    // $comment = Comment::with('post')->whereId(1)->first();
-    // return Response::json($comment);
-
-    // // Insert a record
-    // $post = Post::find(1);
-    // $comment = new Comment;
-
-    // // $comment->name = "My third Comment";
-    // $comment->name = "My forth Comment";
-
-    // $post->comments()->save($comment);
-    // return "Sucessfully Insert a record!";
-
-    // Insert multi record at a time
-    // $post = Post::find(1);
-    // $comment5 = new Comment;
-    // $comment5->name = "My fifth Comment";
-
-    // $comment6 = new Comment;
-    // $comment6->name = "My sixth Comment";
-
-    // $post->comments()->saveMany([$comment5,$comment6]);
-    // return "Sucessfully Insert Multi Record!";
-
-    $comment = Comment::find(2);
-    $post = Post::find(2);
-
-    $comment->post()->associate($post)->save();
-    return "Sucessfully Changeed the foregin key !";
+    $user = User::find(1);
+    $roles = $user->roles;
+    dd($roles);
 });
