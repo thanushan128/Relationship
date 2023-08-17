@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -100,32 +101,40 @@ use App\Models\Role;
 
 
 // many to many Realation
+// Route::get('/', function () {
+//     // $user = User::find(1);
+//     // $roles = $user->roles;
+//     // dd($roles);
+
+//     // $user = User::with('roles')->whereId(1)->first();
+//     // return Response::json($user);
+
+//     // $role = Role::find(1);
+//     // $users = $role->users;
+//     // dd($users);
+
+//     // $role = Role::with('users')->whereId(1)->first();
+//     // return Response::json($role);
+
+//     // add roles
+//     // $user = User::find(2);
+//     // $roles = [2,3];
+
+//     // $user->roles()->attach($roles);
+//     // return "Roles Added!";
+
+//     // Inverse
+//     $role = Role::find(1);
+//     $user_ids = [1,2];
+
+//     $role->users()->attach($user_ids);
+//     return "Users Added";
+// });
+
+
+// Has Many Through & Has One Through Relationship
 Route::get('/', function () {
-    // $user = User::find(1);
-    // $roles = $user->roles;
-    // dd($roles);
-
-    // $user = User::with('roles')->whereId(1)->first();
-    // return Response::json($user);
-
-    // $role = Role::find(1);
-    // $users = $role->users;
-    // dd($users);
-
-    // $role = Role::with('users')->whereId(1)->first();
-    // return Response::json($role);
-
-    // add roles
-    // $user = User::find(2);
-    // $roles = [2,3];
-
-    // $user->roles()->attach($roles);
-    // return "Roles Added!";
-
-    // Inverse
-    $role = Role::find(1);
-    $user_ids = [1,2];
-
-    $role->users()->attach($user_ids);
-    return "Users Added";
+    $category = Category::find(1);
+    $items = $category->items;
+    dd($items);
 });
