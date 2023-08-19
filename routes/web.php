@@ -2,12 +2,14 @@
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\CommentPoly;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Response;
 use App\Models\Phone;
 use App\Models\Post;
 use App\Models\Role;
+use App\Models\Video;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,8 +135,22 @@ use App\Models\Role;
 
 
 // Has Many Through & Has One Through Relationship
+// Route::get('/', function () {
+//     $category = Category::find(1);
+//     $items = $category->items;
+//     dd($items);
+// });
+
+// Polymorphic One to Many | morphMany & morphTo
 Route::get('/', function () {
-    $category = Category::find(1);
-    $items = $category->items;
-    dd($items);
+    $post = Post::find(1);
+    $commentPoly = new CommentPoly;
+    $commentPoly->body = "Hi this is a good post";
+    $post->commentPolies()->save($commentPoly);
+
+    $video = Video::find(1);
+    $commentPoly = new CommentPoly;
+    $commentPoly->body = "Hi this video is awesom!";
+    $video->commentPolies()->save($commentPoly);
+    return "Post and video comment created!";
 });
